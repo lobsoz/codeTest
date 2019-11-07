@@ -1,11 +1,15 @@
+
 #include <iostream>
 #include <algorithm>  
 #include <fstream>
+#include <array> 
+
 using namespace std;
 
 class Anagrams {
    protected:
       string inputPhrase;
+      string* anagramList = new string[0];
       
    public:
       Anagrams( string input){
@@ -35,7 +39,19 @@ class Anagrams {
          {
             sort(word.begin(), word.end());
             if (word == inputPhrase){
-                
+                int max = sizeof(anagramList)/sizeof(anagramList[0]);
+                max++;
+                string* temp = new string[max]; 
+                for (int i=0; i<max; i++) {
+                    if(i == max-1){
+                         temp[i] = word;
+                         
+                    }else{
+                        temp[i] = anagramList[i];       
+                    }
+                }
+                delete [] anagramList;              
+                anagramList = temp;                 
             }
          }
          inFile.close();
