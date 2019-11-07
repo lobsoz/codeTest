@@ -16,7 +16,7 @@ class Anagrams {
       }
       void findAnagrams() {
          sort(inputPhrase.begin(), inputPhrase.end());
-         cout << inputPhrase << endl;
+         searchFileForAnagram();
          return;
       }
       
@@ -28,10 +28,10 @@ class Anagrams {
          if (inFile.fail())
          {
             cout << "Error opening file - quit\n";
-            return 1;
+            return;
          }
          string word;
-         while (file >> word)
+         while (inFile >> word)
          {
             sort(word.begin(), word.end());
             if (word == inputPhrase){
